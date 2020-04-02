@@ -113,4 +113,44 @@ public class Recette {
   public void setInstructions(String instructions) {
     this.instructions = instructions;
   }
+
+  public Difficulte getDifficulte() {
+    return difficulte;
+  }
+
+  public void setDifficulte(Difficulte difficulte) {
+    this.difficulte = difficulte;
+  }
+
+  public Byte[] getImage() {
+    return image;
+  }
+
+  public void setImage(Byte[] image) {
+    this.image = image;
+  }
+
+  public Commentaire getCommentaire() {
+    return commentaire;
+  }
+
+  public void setCommentaire(Commentaire commentaire) {
+    this.commentaire = commentaire;
+  }
+
+  public Set<Ingredient> getIngredients() {
+    return ingredients;
+  }
+
+  public void setIngredients(Set<Ingredient> ingredients) {
+    this.ingredients = ingredients;
+  }
+
+  public Set<Categorie> getCategories() {
+    return categories;
+  }
+
+  public void setCategories(Set<Categorie> categories) {
+    this.categories = categories;
+  }
 }
