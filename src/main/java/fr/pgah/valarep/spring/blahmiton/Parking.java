@@ -71,7 +71,7 @@ public class Parking {
     System.out.println("Taux de remplissage : " + tauxRemplissage());
   }
 
-  private double tauxRemplissage() {
+  public double tauxRemplissage() {
     double taux = (double) nbVehiculesPresents() / capacite * 100;
     return Math.round(taux);
   }
