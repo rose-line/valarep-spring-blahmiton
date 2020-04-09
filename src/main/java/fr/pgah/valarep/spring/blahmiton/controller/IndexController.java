@@ -1,38 +1,27 @@
 package fr.pgah.valarep.spring.blahmiton.controller;
 
-import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import fr.pgah.valarep.spring.blahmiton.model.Categorie;
-import fr.pgah.valarep.spring.blahmiton.model.UniteDeMesure;
-import fr.pgah.valarep.spring.blahmiton.repo.CategorieRepo;
-import fr.pgah.valarep.spring.blahmiton.repo.UniteDeMesureRepo;
+import fr.pgah.valarep.spring.blahmiton.model.Recette;
+import fr.pgah.valarep.spring.blahmiton.service.ServiceRecettes;
 
 @Controller
 public class IndexController {
 
-  private CategorieRepo catRepo;
-  private UniteDeMesureRepo udmRepo;
+  private ServiceRecettes serviceRecettes;
 
-  public IndexController(CategorieRepo catRepo, UniteDeMesureRepo udmRepo) {
-    this.catRepo = catRepo;
-    this.udmRepo = udmRepo;
+  public IndexController(ServiceRecettes service) {
+    this.serviceRecettes = service;
   }
 
   @RequestMapping({"", "/", "/index", "/index.htm", "/index.html"})
-  public String getIndex() {
+  public String getIndex(Model model) {
 
-    List<Categorie> categories = catRepo.findByNom("Italien");
-    Categorie cat = categories.get(0);
-    List<UniteDeMesure> udms = udmRepo.findByNom("cas");
-    UniteDeMesure udm = udms.get(0);
-
-    System.out.println("cat : " + cat.getId() + " " + cat.getNom());
-    System.out.println("udm : " + udm.getId() + " " + udm.getNom());
+    Set<Recette> recettes = serviceRecettes.getRecettes();
+    model.addAttribute("recettes", recettes);
 
     return "index";
   }
-
-
-
 }

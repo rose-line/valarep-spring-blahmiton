@@ -16,3 +16,9 @@ VALUES
 INSERT INTO unite_de_mesure (nom)
 VALUES
   ('g');
+INSERT INTO unite_de_mesure (nom)
+VALUES
+  ('l');
+INSERT INTO unite_de_mesure (nom)
+VALUES
+  ('unite');

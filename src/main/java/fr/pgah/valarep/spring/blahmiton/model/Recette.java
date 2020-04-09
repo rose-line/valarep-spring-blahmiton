@@ -27,7 +27,6 @@ public class Recette {
   private int tempsCuisson;
   private int nbPersonnes;
   private String source;
-  private String url;
 
   @Lob
   private String instructions;
@@ -96,14 +95,6 @@ public class Recette {
 
   public void setSource(String source) {
     this.source = source;
-  }
-
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
   }
 
   public String getInstructions() {

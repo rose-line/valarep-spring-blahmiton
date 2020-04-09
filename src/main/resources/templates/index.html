@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="https://thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -11,6 +11,17 @@
 <body>
 
   <h1>Les recettes</h1>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+    </tr>
+    <tr th:each="recette : ${recettes}">
+      <td th:text="${recette.id}">12345</td>
+      <td th:text="${recette.description}">Super recette</td>
+    </tr>
+  </table>
 
 </body>
 
