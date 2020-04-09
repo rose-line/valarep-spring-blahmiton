@@ -5,7 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class Commentaire {
 
@@ -17,29 +21,4 @@ public class Commentaire {
 
   @OneToOne
   private Recette recette;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getCommentaire() {
-    return commentaire;
-  }
-
-  public void setCommentaire(String commentaire) {
-    this.commentaire = commentaire;
-  }
-
-  public Recette getRecette() {
-    return recette;
-  }
-
-  public void setRecette(Recette recette) {
-    this.recette = recette;
-  }
-
 }

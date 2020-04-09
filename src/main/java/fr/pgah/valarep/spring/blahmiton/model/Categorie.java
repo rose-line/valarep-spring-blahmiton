@@ -6,7 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class Categorie {
 
@@ -18,29 +22,4 @@ public class Categorie {
 
   @ManyToMany(mappedBy = "categories")
   private Set<Recette> recettes;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getNom() {
-    return nom;
-  }
-
-  public void setNom(String nom) {
-    this.nom = nom;
-  }
-
-  public Set<Recette> getRecettes() {
-    return recettes;
-  }
-
-  public void setRecettes(Set<Recette> recettes) {
-    this.recettes = recettes;
-  }
-
 }
