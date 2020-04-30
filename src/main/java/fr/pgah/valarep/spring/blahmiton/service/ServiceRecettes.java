@@ -7,4 +7,6 @@ public interface ServiceRecettes {
 
   Set<Recette> getRecettes();
 
+  Recette findById(long id);
+
 }

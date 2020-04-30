@@ -30,4 +30,9 @@ public class ServiceRecettesImpl implements ServiceRecettes {
 
     return recettes;
   }
+
+  @Override
+  public Recette findById(long id) {
+    return recetteRepo.findById(id).get();
+  }
 }
