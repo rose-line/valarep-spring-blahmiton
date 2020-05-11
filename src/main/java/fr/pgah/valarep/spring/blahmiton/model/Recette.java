@@ -1,5 +1,6 @@
 package fr.pgah.valarep.spring.blahmiton.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -42,16 +43,16 @@ public class Recette {
   private Byte[] image;
 
   @OneToOne(cascade = CascadeType.ALL)
-  private Commentaire commentaire;
+  private Commentaire commentaire = new Commentaire();
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "recette")
-  private Set<Ingredient> ingredients;
+  private Set<Ingredient> ingredients = new HashSet<>();
 
   @ManyToMany
   @JoinTable(name = "recette_categorie",
       joinColumns = @JoinColumn(name = "id_recette"),
       inverseJoinColumns = @JoinColumn(name = "id_categorie"))
-  private Set<Categorie> categories;
+  private Set<Categorie> categories = new HashSet<>();
 
 
 }
