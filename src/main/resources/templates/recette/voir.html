@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" xmnlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -9,31 +9,34 @@
 
 <body>
 
-  <h1>Nom de la recette</h1>
+  <h1 th:text="${recette.description}">Nom de la recette</h1>
 
   <ul>
-    <li>Cat 1</li>
-    <li>Cat 2</li>
-    <li>Cat 3</li>
+    <li th:remove="all">Cat 1</li>
+    <li th:remove="all">Cat 2</li>
+    <li th:each="cat : ${recette.categories}" th:text="${cat.nom}">Cat 3</li>
   </ul>
-  <p>Nb. personnes : <span>4</span></p>
-  <p>Temps préparation : <span>30 min</span></p>
-  <p>Temps cuisson : <span>50 min</span></p>
-  <p>Difficulté : <span>Moyenne</span></p>
-  <a href="#">http://bidon.com</a>
+  <p>Nb. personnes : <span th:text="${recette.nbPersonnes}">4</span></p>
+  <p>Temps préparation : <span th:text="${recette.tempsPrep}">30 min</span></p>
+  <p>Temps cuisson : <span th:text="${recette.tempsCuisson}">50 min</span></p>
+  <p>Difficulté : <span th:text="${recette.difficulte}">Moyenne</span></p>
+  <a href="#" th:href="${recette.source}" th:text="${recette.source}">http://bidon.com</a>
 
   <h3>Ingrédients</h3>
 
   <ul>
-    <li>Farine : <span>200 g</span></li>
-    <li>Oeufs : <span>3</span></li>
-    <li>Sucre : <span>3 cas</span></li>
-    <li>Lait : <span>1 l</span></li>
+    <li th:remove="all">Farine : <span>200 g</span></li>
+    <li th:remove="all">Oeufs : <span>3</span></li>
+    <li th:remove="all">Sucre : <span>3 cas</span></li>
+    <li th:each="ing : ${recette.ingredients}"
+      th:text="${(ing.nom) + ' : ' + (ing.quantite) + ' ' + (ing.uniteDeMesure.nom)}">Lait : <span>1
+        l</span></li>
   </ul>
 
   <h3>Instructions</h3>
 
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magni eum corrupti debitis laudantium? In excepturi
+  <p th:text="${recette.instructions}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magni eum corrupti
+    debitis laudantium? In excepturi
     voluptate perspiciatis quod dolorum commodi hic sit impedit delectus reprehenderit! Quas itaque repellendus ab
     cumque ipsam, exercitationem modi saepe nesciunt provident omnis, obcaecati aliquid sapiente voluptates repudiandae?
     Corporis voluptatem voluptates quae. Ipsam voluptatem repellendus, laborum, distinctio ad repudiandae ducimus iure
@@ -50,7 +53,8 @@
 
   <h3>Commentaire</h3>
 
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, ad reprehenderit qui eius quasi accusamus optio
+  <p th:text="${recette.commentaire.commentaire}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, ad
+    reprehenderit qui eius quasi accusamus optio
     doloremque libero? Facere sit necessitatibus possimus nulla obcaecati voluptate unde autem exercitationem doloribus
     quas quia qui reprehenderit reiciendis iusto aut culpa quam aliquam voluptates eaque laborum accusamus minima, hic
     odit? Sed perspiciatis quae impedit.</p>
