@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class IngredientToCommand implements Converter<Ingredient, IngredientCommandObj> {
 
-  // METTRE @NotNull pour faire merder les tests
   @NonNull
   private UniteDeMesureToCommand udmConverter;
 

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <title>Formulaire recette</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container m-4">
+    <div class="col-md">
+      <form th:object="${recette}" th:action="@{/recette/}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="card">
+          <div class="card-header text-secondary bg-warning">
+            <h2>Informations sur la recette</h1>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>Recette : </label>
+                <input type="text" class="form-control" th:field="*{description}" />
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Catégories :</label>
+                <div class="form-check">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="cb1" value="cat1">
+                    <label class="form-check-label" for="cb1">Cat 1</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="cb2" value="cat2">
+                    <label class="form-check-label" for="cb2">Cat 2</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 form-group">
+                <label>Préparation :</label>
+                <input type="text" class="form-control" th:field="*{tempsPrep}" />
+              </div>
+              <div class="col-md-3 form-group">
+                <label>Cuisson :</label>
+                <input type="text" class="form-control" th:field="*{tempsCuisson}" />
+              </div>
+              <div class="col-md-3 form-group">
+                <label>Pour :</label>
+                <input type="text" class="form-control" th:field="*{nbPersonnes}" />
+              </div>
+              <div class="col-md-3 form-group">
+                <label>Difficulté :</label>
+                <select class="form-control">
+                  <option>Facile</option>
+                  <option>Moyenne</option>
+                  <option>Difficile</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md form-group">
+                <label>Source :</label>
+                <input type="text" class="form-control" th:field="*{source}" />
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header text-secondary bg-warning">
+              <div class="row">
+                <h2 class="col-md-10">Ingrédients</h1>
+                  <div class="col-md-2 my-auto">
+                    <a class="btn btn-secondary" href="#" role="button">Éditer</a>
+                  </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <ul>
+                    <li th:remove="all">1 litre de lait</li>
+                    <li th:remove="all">1 cas de sucre</li>
+                    <li th:each="ingredient : ${recette.ingredients}"
+                      th:text="${(ingredient.getQuantite() + ' ' + ingredient.uniteDeMesure.getNom() + ' ' + ingredient.getNom())}">
+                      1 cac cannelle
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header text-secondary bg-warning">
+              <div class="row">
+                <h2 class="col-md">Instructions</h1>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <textarea class="form-control" rows="10" th:field="*{instructions}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur dolorem nulla repellat sit dolores consequatur eveniet asperiores facilis. Consectetur blanditiis enim veniam eum nisi dolore velit voluptatibus. Repellat vero porro quis dolor sapiente quaerat nulla quisquam ad eius recusandae minima blanditiis iusto incidunt, delectus ullam, ea modi reiciendis beatae reprehenderit distinctio ipsam. Saepe, cum labore soluta consectetur assumenda, provident eum, perferendis iusto repudiandae accusantium error enim? Molestias placeat error ipsam debitis. Consequuntur eaque aut vero consectetur dicta facilis earum nemo! Provident quaerat molestiae nostrum ducimus optio? Quo neque porro nesciunt odit numquam ut, sapiente nihil fugiat natus minus, libero veniam.
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header text-secondary bg-warning">
+              <div class="row">
+                <h2 class="col-md">Commentaire</h1>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <textarea class="form-control" rows="4" th:field="*{commentaire.commentaire}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore vel soluta est, tempora quas incidunt nobis deserunt similique autem et libero necessitatibus?
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</html>
